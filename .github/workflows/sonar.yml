@@ -1,13 +1,20 @@
-# .github/workflows/sonar.yml
 name: Sonar Scan
 
 on:
- workflow_call:
+  workflow_call: # This allows this workflow to be called from another workflow
 
 jobs:
   sonar:
-    runs-on: java_build
-    #needs: build  # Ensures Sonar runs after build succeeds
+    runs-on: [self-hosted, java_build] # Ensures it uses the self-hosted runner with the 'java_build' label
+
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3 # Ensure the code is checked out before running the SonarQube scan
+
       - name: SonarCloud Scan
-        run: mvn sonar:sonar -Dsonar.projectKey=c-manna_DevSecops_Pipeline -Dsonar.organization=c-manna -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_PROJECT_KEY }}
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=c-manna_DevSecops_Pipeline \
+            -Dsonar.organization=c-manna \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_PROJECT_KEY }}
