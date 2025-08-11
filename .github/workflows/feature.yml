@@ -10,15 +10,9 @@ env:
   MAVEN_OPTS: "-DskipTests=true"
 
 jobs:
-  setup-java:
-    uses: ./.github/workflows/setup-java.yml
-    secrets: inherit
-
   build:
     uses: ./.github/workflows/javabuild.yml
-    needs: setup-java
     secrets: inherit
-
   sonar:
     uses: ./.github/workflows/sonar.yml
     needs: build

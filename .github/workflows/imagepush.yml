@@ -12,12 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses:
-          actions/checkout@v3
-
-      # Use the common Java setup workflow
-      - name: Set up Java
-        uses: ./.github/workflows/setup-java.yml
+        uses: actions/checkout@v3
 
       - name: Set up Docker
         run: |
