@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Use self-hosted runner, ensure it’s registered with a label like "java_build" if needed
+    runs-on: java_build  # Use self-hosted runner, ensure it’s registered with a label like "java_build" if needed
 
     steps:
       # Step 1: Checkout Code
