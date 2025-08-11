@@ -8,8 +8,6 @@ jobs:
     runs-on: java_build # Ensures it uses the self-hosted runner with the 'java_build' label
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3 # Ensure the code is checked out before running the SonarQube scan!
 
       - name: SonarCloud Scan
         run: |

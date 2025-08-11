@@ -11,26 +11,13 @@ jobs:
       DOCKER_IMAGE: chandrakantamanna/petapp:${{ github.sha }} # Set Docker image name based on commit SHA
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Docker
-        run: |
-          # Make sure Docker is installed and running
-          sudo systemctl start docker
-          sudo systemctl enable docker
-
       - name: Build Docker Image
         run: |
-          # Build the Docker image and save it as a tarball
           sudo docker build -t ${{ env.DOCKER_IMAGE }} .
           sudo docker save ${{ env.DOCKER_IMAGE }} > docker_image.tar
 
       - name: Log in to DockerHub
-        run: |
-          echo "${{ secrets.DOCKER_PASSWORD }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
-        run: |
-          # Push the Docker image to DockerHub
-          sudo docker push ${{ env.DOCKER_IMAGE }}
+        run: sudo docker push ${{ env.DOCKER_IMAGE }}
