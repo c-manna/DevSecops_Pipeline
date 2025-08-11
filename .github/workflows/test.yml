@@ -1,18 +1,23 @@
 name: Test
 
 on:
-  workflow_call:  # Allows this workflow to be called from another workflow
+  workflow_call: # Allows this workflow to be called from another workflow
 
 jobs:
   test:
-    runs-on: java_build  # Use self-hosted runner with the 'java_build' label
+    runs-on: java_build # Use self-hosted runner with the 'java_build' label
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3  # Ensures the code is checked out before running the tests
+        uses: actions/checkout@v3 # Ensures the code is checked out before running the tests
+
+        # Use the common Java setup workflow
+      - name: Set up Java
+        uses: ./.github/workflows/setup-java.yml
 
       - name: Run Unit Tests
-        run: mvn test  # Run the tests using Maven!
+        run: mvn test # Run the tests using Maven!
+
 
       # Optional: Upload test results to GitHub Actions for easy access
       # - name: Upload Test Results

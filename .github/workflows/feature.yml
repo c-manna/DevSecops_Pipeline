@@ -27,3 +27,7 @@ jobs:
     uses: ./.github/workflows/imagepush.yml
     needs: test
     secrets: inherit
+
+  setup-java:
+    uses: ./.github/workflows/setup-java.yml
+    secrets: inherit
