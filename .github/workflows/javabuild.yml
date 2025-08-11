@@ -43,4 +43,4 @@ jobs:
       # Step 6: Upload JAR to JFrog
       - name: Upload JAR to JFrog
         run: |
-          jf rt u "target/*.jar" "petjfrog-repo/"
+          jf rt u "target/*.jar" "petapp/"
