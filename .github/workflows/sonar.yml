@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3 # Ensure the code is checked out before running the SonarQube scan
+        uses: actions/checkout@v3 # Ensure the code is checked out before running the SonarQube scan!
 
       - name: SonarCloud Scan
         run: |
