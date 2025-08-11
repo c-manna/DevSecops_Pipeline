@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    runs-on: [self-hosted, java_build]  # Use self-hosted runner with the 'java_build' label
+    runs-on: self-hosted  # Use self-hosted runner with the 'java_build' label
 
     steps:
       - name: Checkout Code
