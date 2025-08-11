@@ -37,7 +37,7 @@ jobs:
         with:
           version: latest
         env:
-          JF_URL: https://trialut7cik.jfrog.io/artifactory/api/maven/petapp
+          JF_URL: https://trialut7cik.jfrog.io
           JF_ACCESS_TOKEN: ${{ secrets.JFROG_TOKEN }}
 
       # Step 6: Upload JAR to JFrog
